@@ -20,6 +20,11 @@ feature_order = [
     "worst_compactness","worst_concavity","worst_concave_points","worst_symmetry","worst_fractal_dimension"
 ]
 
+# ✅ Root route so Render doesn't show "Steady hands..." placeholder
+@app.route("/")
+def home():
+    return "Breast Cancer ML API is running."
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -109,4 +114,5 @@ def metrics():
 
 
 if __name__ == "__main__":
+    # This is only used when running locally, Render will use gunicorn
     app.run(debug=True)
